@@ -1,6 +1,7 @@
 include Casein::ConfigHelper
 
 $CASEIN_USER_ACCESS_LEVEL_ADMIN = 0
+$CASEIN_USER_ACCESS_LEVEL_HR = 5
 $CASEIN_USER_ACCESS_LEVEL_USER = 10
 
 module Casein

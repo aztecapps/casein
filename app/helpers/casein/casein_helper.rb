@@ -35,6 +35,8 @@ module Casein
   	  case level
       when $CASEIN_USER_ACCESS_LEVEL_ADMIN
         return "Administrator"
+      when $CASEIN_USER_ACCESS_LEVEL_HR
+        return "HR"
       when $CASEIN_USER_ACCESS_LEVEL_USER
   	    return "User"
   	  else
@@ -43,7 +45,7 @@ module Casein
   	end
 
   	def casein_get_access_level_array
-  	  [["Administrator", $CASEIN_USER_ACCESS_LEVEL_ADMIN], ["User", $CASEIN_USER_ACCESS_LEVEL_USER]]
+  	  [["Administrator", $CASEIN_USER_ACCESS_LEVEL_ADMIN], ["HR", $CASEIN_USER_ACCESS_LEVEL_HR], ["User", $CASEIN_USER_ACCESS_LEVEL_USER]]
   	end
 
     def casein_pagination_details objs
