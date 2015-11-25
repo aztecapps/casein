@@ -168,7 +168,7 @@ module Casein
       form_tags = ""
 
       for radio_button in radio_buttons
-        form_tags += casein_radio_button form, obj, check_box[0], check_box[1], check_box[2]
+        form_tags += casein_radio_button form, obj, radio_button[0], radio_button[1], radio_button[2]
       end
 
       casein_form_tag_wrapper(form_tag, form, obj, attribute, options).html_safe
