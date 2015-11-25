@@ -144,7 +144,7 @@ module Casein
       casein_form_tag_wrapper(form_tag, form, obj, attribute, options).html_safe
   	end
 
-  	def casein_check_box_group form, obj, attribute, check_boxes = []
+  	def casein_check_box_group form, obj, attribute, check_boxes = [], options = {}
       form_tags = ""
 
       for check_box in check_boxes
@@ -154,30 +154,31 @@ module Casein
         form_tags += casein_check_box form, obj, check_box[0], check_box[1]
       end
 
-      casein_form_tag_wrapper(form_tags, form, obj, attribute)
+      casein_form_tag_wrapper(form_tags, form, obj, attribute, options).html_safe
     end
 
   	def casein_radio_button form, obj, attribute, tag_value, options = {}
   	  form_tag = form.radio_button(attribute, tag_value, strip_casein_options(options))
 
   	  if options.key? :casein_button_label
-  	    form_tag = "<div>" + form_tag + "<span class=\"rcText\">#{options[:casein_button_label]}</span></div>".html_safe
+  	    form_tag = "<div>" + form_tag + " <span class=\"rcText\">#{options[:casein_button_label]}</span></div>".html_safe
   	  end
 
   	  casein_form_tag_wrapper(form_tag, form, obj, attribute, options).html_safe
   	end
 
-  	def casein_radio_button_group form, obj, attribute, radio_buttons = []
+  	def casein_radio_button_group form, obj, attribute, radio_buttons = {}, options = {}
       form_tags = ""
 
       for radio_button in radio_buttons
-        if radio_button[2].blank?
-          radio_button[2] = {}
+        form_tag = form.radio_button(attribute, radio_button[:value], strip_casein_options(radio_button[:options]))
+        if radio_button[:options].key? :casein_button_label
+          form_tag = "<div>" + form_tag + " <span class=\"rcText\">#{radio_button[:options][:casein_button_label]}</span></div>".html_safe
         end
-        form_tags += casein_radio_button form, obj, radio_button[0], radio_button[1], radio_button[2]
+        form_tags += form_tag
       end
 
-      casein_form_tag_wrapper(form_tags, form, obj, attribute).html_safe
+      casein_form_tag_wrapper(form_tags, form, obj, attribute, options).html_safe
     end
 
   	def casein_select form, obj, attribute, option_tags, options = {}
