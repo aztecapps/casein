@@ -144,10 +144,13 @@ module Casein
       casein_form_tag_wrapper(form_tag, form, obj, attribute, options).html_safe
   	end
 
-  	def casein_check_box_group form, obj, check_boxes = {}
+  	def casein_check_box_group form, obj, check_boxes = []
       form_tags = ""
 
       for check_box in check_boxes
+        if check_box[1].blank?
+          check_box[1] = {}
+        end
         form_tags += casein_check_box form, obj, check_box[0], check_box[1]
       end
 
@@ -164,10 +167,13 @@ module Casein
   	  casein_form_tag_wrapper(form_tag, form, obj, attribute, options).html_safe
   	end
 
-  	def casein_radio_button_group form, obj, radio_buttons = {}
+  	def casein_radio_button_group form, obj, radio_buttons = []
       form_tags = ""
 
       for radio_button in radio_buttons
+        if radio_button[2].blank?
+          radio_button[2] = {}
+        end
         form_tags += casein_radio_button form, obj, radio_button[0], radio_button[1], radio_button[2]
       end
 
