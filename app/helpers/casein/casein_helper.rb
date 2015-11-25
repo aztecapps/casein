@@ -151,7 +151,7 @@ module Casein
         form_tags += casein_check_box form, obj, check_box[0], check_box[1]
       end
 
-      casein_form_tag_wrapper(form_tag, form, obj, attribute, options)
+      casein_form_tag_wrapper(form_tag, form, obj, attribute, {})
     end
 
   	def casein_radio_button form, obj, attribute, tag_value, options = {}
@@ -171,7 +171,7 @@ module Casein
         form_tags += casein_radio_button form, obj, radio_button[0], radio_button[1], radio_button[2]
       end
 
-      casein_form_tag_wrapper(form_tag, form, obj, attribute, options).html_safe
+      casein_form_tag_wrapper(form_tag, form, obj, attribute, {}).html_safe
     end
 
   	def casein_select form, obj, attribute, option_tags, options = {}
@@ -273,7 +273,9 @@ module Casein
     protected
 
     def strip_casein_options options
-      options.reject {|key, value| key.to_s.include? "casein_" }
+      if options.is_a? Hash
+        options.reject {|key, value| key.to_s.include? "casein_" }
+      end
     end
 
     def merged_class_hash options, new_class
