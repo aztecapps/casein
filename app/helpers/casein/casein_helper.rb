@@ -173,7 +173,7 @@ module Casein
       for radio_button in radio_buttons
         form_tag = form.radio_button(attribute, radio_button[:value], strip_casein_options(radio_button[:options]))
         if radio_button[:options].key? :casein_button_label
-          form_tag = "<div>" + form_tag + " <span class=\"rcText\">#{radio_button[:options][:casein_button_label]}</span></div>".html_safe
+          form_tag = "<div style=\"display: inline; margin-left: 10px;\">" + form_tag + " <span class=\"rcText\">#{radio_button[:options][:casein_button_label]}</span></div>".html_safe
         end
         form_tags += form_tag
       end
