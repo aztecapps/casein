@@ -155,7 +155,7 @@ module Casein
     end
 
   	def casein_radio_button form, obj, attribute, tag_value, options = {}
-  	  form_tag = form.radio_button(obj, attribute, tag_value, strip_casein_options(options))
+  	  form_tag = form.radio_button(attribute, tag_value, strip_casein_options(options))
 
   	  if options.key? :casein_button_label
   	    form_tag = "<div>" + form_tag + "<span class=\"rcText\">#{options[:casein_button_label]}</span></div>".html_safe
