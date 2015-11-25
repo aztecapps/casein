@@ -276,6 +276,8 @@ module Casein
       if options.is_a? Hash
         options.reject {|key, value| key.to_s.include? "casein_" }
       end
+
+      {}
     end
 
     def merged_class_hash options, new_class
