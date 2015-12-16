@@ -62,7 +62,7 @@ module Casein
     end
 
     def is_hr?
-      access_leve == $CASEIN_USER_ACCESS_LEVEL_HR
+      access_level == $CASEIN_USER_ACCESS_LEVEL_HR
     end
 
   end
