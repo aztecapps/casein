@@ -35,6 +35,8 @@ module Casein
   	  case level
       when $CASEIN_USER_ACCESS_LEVEL_ADMIN
         return "Administrator"
+      when $CASEIN_USER_ACCESS_LEVEL_HR_ADMIN
+        return "HR Admin"
       when $CASEIN_USER_ACCESS_LEVEL_HR
         return "HR"
       when $CASEIN_USER_ACCESS_LEVEL_USER
@@ -45,7 +47,7 @@ module Casein
   	end
 
   	def casein_get_access_level_array
-  	  [["Administrator", $CASEIN_USER_ACCESS_LEVEL_ADMIN], ["HR", $CASEIN_USER_ACCESS_LEVEL_HR], ["User", $CASEIN_USER_ACCESS_LEVEL_USER]]
+  	  [["Administrator", $CASEIN_USER_ACCESS_LEVEL_ADMIN], ["HR Admin", $CASEIN_USER_ACCESS_LEVEL_HR_ADMIN], ["HR", $CASEIN_USER_ACCESS_LEVEL_HR], ["User", $CASEIN_USER_ACCESS_LEVEL_USER]]
   	end
 
     def casein_pagination_details objs
@@ -282,9 +284,9 @@ module Casein
     def strip_casein_options options
       if options.is_a? Hash
         options.reject {|key, value| key.to_s.include? "casein_" }
+      else
+        {}
       end
-
-      {}
     end
 
     def merged_class_hash options, new_class
